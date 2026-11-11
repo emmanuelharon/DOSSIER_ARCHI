@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" modified="2026-11-11T16:30:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="mpd" name="MPD PostgreSQL">
+    <mxGraphModel dx="2100" dy="1260" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2100" pageHeight="1260" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="classic_link_0" value="" edge="1" parent="1" source="pu" target="pa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=2;startArrow=none;endArrow=none;"><mxGeometry relative="1" as="geometry" /></mxCell><mxCell id="classic_link_1" value="" edge="1" parent="1" source="ps" target="pa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=2;startArrow=none;endArrow=none;"><mxGeometry relative="1" as="geometry" /></mxCell><mxCell id="classic_link_2" value="" edge="1" parent="1" source="ps" target="pl" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=2;startArrow=none;endArrow=none;"><mxGeometry relative="1" as="geometry" /></mxCell><mxCell id="classic_link_3" value="" edge="1" parent="1" source="pl" target="pm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=2;startArrow=none;endArrow=none;"><mxGeometry relative="1" as="geometry" /></mxCell><mxCell id="classic_link_4" value="" edge="1" parent="1" source="pm" target="pjp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=2;startArrow=none;endArrow=none;"><mxGeometry relative="1" as="geometry" /></mxCell><mxCell id="classic_link_5" value="" edge="1" parent="1" source="pu" target="pp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=2;startArrow=none;endArrow=none;"><mxGeometry relative="1" as="geometry" /></mxCell><mxCell id="classic_link_6" value="" edge="1" parent="1" source="pu" target="pf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=2;startArrow=none;endArrow=none;"><mxGeometry relative="1" as="geometry" /></mxCell><mxCell id="classic_link_7" value="" edge="1" parent="1" source="ps" target="pd" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=2;startArrow=none;endArrow=none;"><mxGeometry relative="1" as="geometry" /></mxCell><mxCell id="title" value="MPD — PostgreSQL" style="text;html=1;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;fontColor=#111111;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="600" y="22" width="900" height="48" />
+        </mxCell>
+        <mxCell id="subtitle" value="Types, clés, contraintes et index du prototype" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontColor=#444444;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="620" y="70" width="860" height="32" />
+        </mxCell>
+        <mxCell id="pu" value="&lt;b&gt;UTILISATEUR&lt;/b&gt;&lt;hr&gt;id_utilisateur BIGINT PK&lt;br&gt;pseudo VARCHAR(40) NOT NULL&lt;br&gt;email VARCHAR(255) NOT NULL UNIQUE" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#111111;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="110" width="400" height="150" />
+        </mxCell>
+        <mxCell id="ps" value="&lt;b&gt;SERVEUR&lt;/b&gt;&lt;hr&gt;id_serveur BIGINT PK&lt;br&gt;nom VARCHAR(100) NOT NULL" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#111111;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1150" y="110" width="450" height="120" />
+        </mxCell>
+        <mxCell id="pa" value="&lt;b&gt;APPARTENANCE&lt;/b&gt;&lt;hr&gt;id_utilisateur BIGINT FK NOT NULL&lt;br&gt;id_serveur BIGINT FK NOT NULL&lt;br&gt;role VARCHAR(20) CHECK (proprietaire, moderateur, membre)&lt;br&gt;PK(id_utilisateur, id_serveur)" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#111111;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="600" y="350" width="500" height="180" />
+        </mxCell>
+        <mxCell id="pp" value="&lt;b&gt;PRÉSENCE&lt;/b&gt;&lt;hr&gt;id_utilisateur BIGINT PK/FK&lt;br&gt;statut VARCHAR(20) NOT NULL&lt;br&gt;derniere_activite TIMESTAMPTZ NOT NULL&lt;br&gt;expire_le TIMESTAMPTZ NOT NULL" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#111111;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="650" width="430" height="170" />
+        </mxCell>
+        <mxCell id="pf" value="&lt;b&gt;AMITIÉ&lt;/b&gt;&lt;hr&gt;id_a, id_b BIGINT FK NOT NULL&lt;br&gt;date_acceptation TIMESTAMPTZ NOT NULL&lt;br&gt;PK(id_a, id_b)&lt;br&gt;CHECK(id_a &amp;lt; id_b)&lt;br&gt;INDEX(id_b, id_a)" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#111111;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="600" y="650" width="500" height="180" />
+        </mxCell>
+        <mxCell id="pl" value="&lt;b&gt;SALON&lt;/b&gt;&lt;hr&gt;id_salon BIGINT PK&lt;br&gt;id_serveur BIGINT FK NOT NULL&lt;br&gt;nom VARCHAR(100) NOT NULL&lt;br&gt;type VARCHAR(10) CHECK textuel/vocal&lt;br&gt;UNIQUE(id_serveur, nom)" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#111111;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1150" y="350" width="450" height="180" />
+        </mxCell>
+        <mxCell id="pm" value="&lt;b&gt;MESSAGE&lt;/b&gt;&lt;hr&gt;id_message BIGINT PK&lt;br&gt;id_salon BIGINT FK NOT NULL&lt;br&gt;id_auteur BIGINT FK NOT NULL&lt;br&gt;contenu TEXT NOT NULL&lt;br&gt;date_envoi TIMESTAMPTZ NOT NULL&lt;br&gt;date_modification TIMESTAMPTZ NULL&lt;br&gt;INDEX(id_salon, id_message DESC)&lt;br&gt;INDEX(id_auteur)" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#111111;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1150" y="680" width="450" height="250" />
+        </mxCell>
+        <mxCell id="pjp" value="&lt;b&gt;PIÈCE_JOINTE&lt;/b&gt;&lt;hr&gt;id_piece_jointe BIGINT PK&lt;br&gt;id_message BIGINT FK NOT NULL UNIQUE&lt;br&gt;type VARCHAR(10) CHECK image/fichier/lien&lt;br&gt;emplacement TEXT NOT NULL&lt;br&gt;metadonnees_json JSONB" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#111111;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1650" y="680" width="400" height="190" />
+        </mxCell>
+        <mxCell id="pd" value="&lt;b&gt;TABLEAU_BORD&lt;/b&gt;&lt;hr&gt;id_serveur BIGINT FK NOT NULL&lt;br&gt;jour DATE NOT NULL&lt;br&gt;nombre_messages BIGINT CHECK ≥ 0&lt;br&gt;nombre_auteurs BIGINT CHECK ≥ 0&lt;br&gt;PK(id_serveur, jour)" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#111111;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="600" y="950" width="500" height="180" />
+        </mxCell>
+        <mxCell id="p1" value="0,N" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#111111;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="455" y="260" width="60" height="24" />
+        </mxCell>
+        <mxCell id="p2" value="1,N" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#111111;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1105" y="290" width="60" height="24" />
+        </mxCell>
+        <mxCell id="p3" value="0,N" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#111111;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1385" y="285" width="60" height="24" />
+        </mxCell>
+        <mxCell id="p4" value="0,N" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#111111;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1385" y="590" width="60" height="24" />
+        </mxCell>
+        <mxCell id="p5" value="0,1" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#111111;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1605" y="740" width="60" height="24" />
+        </mxCell>
+        <mxCell id="p6" value="0,1" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#111111;fillColor=#ffffff;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="265" y="445" width="60" height="24" />
+        </mxCell>
+        <mxCell id="controlnote" value="&lt;b&gt;Contrôles applicatifs ou trigger :&lt;/b&gt; un propriétaire par serveur ; seuls les salons textuels reçoivent des messages ; l’auteur doit être membre du serveur du salon ; présence expirée après cinq minutes." style="whiteSpace=wrap;html=1;rounded=0;fillColor=#ffffff;strokeColor=#777777;strokeWidth=1;fontColor=#222222;fontSize=12;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="1150" width="1940" height="65" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
